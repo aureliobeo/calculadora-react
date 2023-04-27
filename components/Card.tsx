@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/Card.module.css";
 import { ButtonCard } from "./ButtonCard";
 import { ButtonNumbers } from "./ButtonNumbers";
+import { Button } from "./Button";
 
 type CalcOperators = "AC" | "&" | "%" | "/" | "+" | "-" | "x" | "=";
 
@@ -71,10 +72,6 @@ export const Card = () => {
           }
           break;
         case "=":
-          console.log(inputValue, "inputValue");
-          console.log(firstValue, "primeiro");
-          console.log(secoundValue, "segundo");
-          console.log(threeValue, "segundo");
           if (threeValue == "+") {
             setInputValue(
               (Number(firstValue) + Number(secoundValue)).toString()
@@ -119,7 +116,12 @@ export const Card = () => {
     const subtracao = inputValue.includes("-");
     const multiplicacao = inputValue.includes("x");
     const divisao = inputValue.includes("/");
-    if (contains == false && subtracao == false && multiplicacao == false && divisao == false) {
+    if (
+      contains == false &&
+      subtracao == false &&
+      multiplicacao == false &&
+      divisao == false
+    ) {
       setInputValue((prevValue) => prevValue + newCalculatorChar);
       setFirstValue((prevValue) => prevValue + newCalculatorChar);
     } else {
@@ -129,10 +131,6 @@ export const Card = () => {
       } else {
         setSecoundValue((prevValue) => prevValue + newCalculatorChar);
       }
-      // setSecoundValue((prevValue) => prevValue + newCalculatorChar);
-      console.log(secoundValue);
-      // const parts = secoundValue.split("+");
-      // setSecoundValue(parts[1]);
     }
   };
 
@@ -156,25 +154,25 @@ export const Card = () => {
 
   return (
     <div className={style.card}>
-      <div>Calculadora</div>
-      <div>
-        <div>{inputValue}</div>
-        <div className={style["calculator-container"]}>
+      <div className={style["calculator-title"]}>Calculadora</div>
+      <div className={style["calculator-container"]}>
+        <div className={style["calculator-result"]}>{inputValue}</div>
+        <div className={style["calculator-container-button"]}>
           <div className={style["regular-numbers-container"]}>
             {numbers.map((calcNumber) => (
-              <button
+              <Button
                 key={calcNumber}
                 onClick={() => handleAddValue(calcNumber)}
               >
                 {calcNumber}
-              </button>
+              </Button>
             ))}
           </div>
           <div className={style["right-operators"]}>
             {rightOperators.map((operator) => (
-              <button key={operator} onClick={() => handleAddValue(operator)}>
+              <Button key={operator} onClick={() => handleAddValue(operator)}>
                 {operator}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

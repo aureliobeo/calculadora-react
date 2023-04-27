@@ -1,16 +1,32 @@
 .card {
   height: 450px;
   width: 40%;
-  background-color: green;
+  background-color: black;
   padding: 50px;
   margin: 50px;
-  box-shadow: 2px 2px 2px 8px rgb(0 0 0 / 20%)
+  box-shadow: 2px 2px 2px 8px rgb(0 0 0 / 20%);
 }
 
-.calculator-container {
+.calculator-container-button {
   display: grid;
   grid-template-columns: auto auto;
   gap: 16px;
+  padding-top: 8px;
+}
+
+.calculator-container {
+  padding-top: 4px;
+}
+
+.calculator-title {
+  padding-left: 32%;
+  color: aliceblue;
+}
+
+.calculator-result {
+  height: 32px;
+  direction: rtl;
+  background-color: antiquewhite;
 }
 
 .regular-numbers-container {
